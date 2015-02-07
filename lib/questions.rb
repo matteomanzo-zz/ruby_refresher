@@ -206,7 +206,7 @@ end
 
 # count the number of words in a file
 def word_count_a_file(file_path)
-  count = file_path.split(' ')
+  file.read(file_path)
   count.length
 end
 
@@ -216,6 +216,7 @@ end
 # called call_method_from_string('foobar')
 # the method foobar should be invoked
 def call_method_from_string(str_method)
+
 end
 
 # return true if the date is a uk bank holiday for 2014
@@ -242,7 +243,14 @@ end
 # implement fizzbuzz without modulo, i.e. the % method
 # go from 1 to 100
 # (there's no RSpec test for this one)
-def fizzbuzz_without_modulo
+def fizzbuzz_without_modulo(num)
+  # if (num.to_f / 3.0) == *,0
+  #   'fizz'
+  # elsif (num.to_f / 5.0) == *,0
+  #   'buzz'
+  # else (num.to_f / 15.0) == *,0
+  #   'fizzbuzz'
+  # end
 end
 
 # print the lyrics of the song 99 bottles of beer on the wall
@@ -252,4 +260,16 @@ end
 # at the end.
 # (there's no RSpec test for this one)
 def ninety_nine_bottles_of_beer
+
+  i = 99
+  while i > 1
+    puts "#{i} bottles of beer on the wall, #{i} bottles of beer."
+    puts "Take one down and pass it around, #{i-1} bottles of beer on the wall."
+    i -= 1
+  end
+  puts "1 bottle of beer on the wall, 1 bottle of beer."
+  puts "Take one down and pass it around, no more bottles of beer on the wall."
+  puts ''
+  puts "No more bottles of beer on the wall, no more bottles of beer."
+  puts "Go to the store and buy some more, 99 bottles of beer on the wall."
 end
