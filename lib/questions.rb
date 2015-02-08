@@ -206,8 +206,7 @@ end
 
 # count the number of words in a file
 def word_count_a_file(file_path)
-  file.read(file_path)
-  count.length
+  file = File.open(file_path, 'r') {|f| f.readline.split(' ').length}
 end
 
 # --- tougher ones ---
@@ -216,6 +215,7 @@ end
 # called call_method_from_string('foobar')
 # the method foobar should be invoked
 def call_method_from_string(str_method)
+  call(str_method).to_sym
 
 end
 
@@ -230,6 +230,8 @@ end
 # e.g. january 1st, will next be a friday in 2016
 # return the day as a capitalized string like 'Friday'
 def your_birthday_is_on_a_friday_in_the_year(birthday)
+  while (!birthday.friday?) do birthday += (60 * 60 * 24 * 365) end
+  return birthday.year
 end
 
 # in a file, total the number of times words of different lengths
@@ -238,19 +240,25 @@ end
 # and 1 that is 4 letters long. Return it as a hash in the format
 # word_length => count, e.g. {2 => 1, 3 => 5, 4 => 1}
 def count_words_of_each_length_in_a_file(file_path)
+  # file = File.open(file_path, 'r'){|f| f.readline.split(' ')}
+  # file.each{|file| file.length == file.length}
 end
 
 # implement fizzbuzz without modulo, i.e. the % method
 # go from 1 to 100
 # (there's no RSpec test for this one)
 def fizzbuzz_without_modulo(num)
-  # if (num.to_f / 3.0) == *,0
-  #   'fizz'
-  # elsif (num.to_f / 5.0) == *,0
-  #   'buzz'
-  # else (num.to_f / 15.0) == *,0
-  #   'fizzbuzz'
-  # end
+  if (num == 0)
+    'Enter a valid number'
+  elsif (num.to_f / 15) == num/15
+    'fizzbuzz'
+  elsif (num.to_f / 5) == num/5
+    'buzz'
+  elsif (num.to_f / 3) == num/3
+    'fizz'
+  else
+    num
+  end
 end
 
 # print the lyrics of the song 99 bottles of beer on the wall
