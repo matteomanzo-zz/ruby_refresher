@@ -44,7 +44,7 @@ end
 
 # add an element to the beginning of an array
 def add_element_to_beginning_of_array(array, element)
-
+  array.unshift(element)
 end
 
 # sort an array of words by their last letter, e.g.
@@ -84,10 +84,12 @@ end
 
 # return the shortest word in an array
 def shortest_word_in_array(array)
+  array.min
 end
 
 # return the shortest word in an array
 def longest_word_in_array(array)
+  array.max{|a, b| a.length <=> b.length}
 end
 
 # add up all the numbers in an array, so [1, 3, 5, 6]
@@ -119,7 +121,7 @@ end
 # [1, 3, 5, 4, 1, 2, 6, 2, 1, 3, 7]
 # becomes [1, 3, 5, 4, 1, 2]
 def get_elements_until_greater_than_five(array)
-  array.select!{|elem| elem <= 5}
+  array.take_while{|elem| elem <= 5}
 end
 
 # turn an array (with an even number of elements) into a hash, by
@@ -140,6 +142,7 @@ end
 # {'a' => 'b', 'c' => 'd'} becomes
 # {'b' => 'a', 'd' => 'c'}
 def swap_keys_and_values_in_a_hash(hash)
+  hash.invert
 end
 
 # in a hash where the keys and values are all numbers
@@ -151,6 +154,7 @@ end
 # take out all the capital letters from a string
 # so 'Hello JohnDoe' becomes 'ello ohnoe'
 def remove_capital_letters_from_string(string)
+  string.delete '/[A-Z]/'
 end
 
 # round up a float up and convert it to an Integer,
@@ -173,6 +177,7 @@ end
 # get the domain name *without* the .com part, from an email address
 # so alex@makersacademy.com becomes makersacademy
 def get_domain_name_from_email_address(email)
+  /[*@-.com]/.match(email)
 end
 
 # capitalize the first letter in each word of a string,
